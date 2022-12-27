@@ -1,0 +1,209 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% include 'stock/headers.html' %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview wide-md mx-auto">
+                     <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="nk-block-title">{{title}}</h4>
+                                            </div>
+                                        </div>
+                          <div class="col-lg-12 pb-5">
+                            <div class="card h-100">
+                                <div class="card-inner">
+                                    <form method="POST" action=" ">
+                                      {% csrf_token %}
+                                      {{form|crispy}}
+                                      <input class="mt-2 btn btn-primary" type="submit">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
+                                            <thead>
+                                                <tr class="nk-tb-item nk-tb-head">
+                                                    <th class="nk-tb-col tb-col-sm"><span>COUNT</span></th>
+                                                    <th class="nk-tb-col"><span>ID</span></th>
+                                                    <th class="nk-tb-col"><span>CATEGORY</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span>ITEM NAME</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>QUANTITY IN STORE</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>ISSUE QUANTITY</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>RECEIVE QUANTITY</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span>ISSUED BY</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>RECEIVED BY</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>LAST UPDATED</span></th>
+                                                </tr><!-- .nk-tb-item -->
+                                            </thead>
+                                            <tbody>
+
+
+
+                                                {% for total in history %}
+                                                <tr class="nk-tb-item">
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">{{forloop.counter}}</span>
+                                                    </td>
+                                                   <td class="nk-tb-col">
+                                                        <span class="tb-lead">{{total.id}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-lead">{{total.category}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">{{total.item_name}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.quantity}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.issue_quantity}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.receive_quantity}}</span>
+                                                    </td>
+                                                      <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.issued_by}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.received_by}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">{{total.last_updated}}</span>
+                                                    </td>
+                                                </tr><!-- .nk-tb-item -->
+                                             {% endfor %}
+
+
+
+
+
+
+                                            </tbody>
+                                        </table><!-- .nk-tb-list -->
+                                    </div> <!-- nk-block -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+
+<!--<form method="GET" action="">-->
+     {% csrf_token %}
+<form method="POST" action=" ">
+    {% csrf_token %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>COUNT</th>
+              <th>ID</th>
+              <th>CATEGORY</th>
+              <th>ITEM NAME</th>
+              <th>QUANTITY IN STORE</th>
+              <th>ISSUE QUANTITY</th>
+              <th>RECEIVE QUANTITY</th>
+              <th>ISSUED BY</th>
+              <th>RECEIVED BY</th>
+              <th>LAST UPDATED</th>
+        </tr>
+        </thead>
+
+           {% for total in history %}
+            <tr>
+
+              <td>{{forloop.counter}}</td>
+              <td>{{total.id}}</td>
+              <td>{{total.category}}</td>
+              <td>{{total.item_name}}</td>
+              <td>{{total.quantity}}</td>
+              <td>{{total.issue_quantity}}</td>
+              <td>{{total.receive_quantity}}</td>
+              <td>{{total.issued_by}}</td>
+              <td>{{total.received_by}}</td>
+              <td>{{total.last_updated}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</form>
+  </div>
+</main>
+
+{% include 'stock/footers.html' %}
+
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+{% for message in messages %}
+    <script>
+        Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: '{{message}}',
+  showConfirmButton: true,
+  timer: 15000
+})
+    </script>
+{% endfor %}
+{% for every in everything %}
+<script>
+    document.getElementById('{{forloop.counter}}').onclick = function(){
+	const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure you want to delete {{every.item_name}}?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: '<a href="{% url 'delete_stock' every.id %}">Delete</a>',
+  cancelButtonText: 'Cancel',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire(
+      'Deleted!',
+      '{{every.item_name}} has been deleted.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your item is safe :)',
+      'error'
+    )
+  }
+})
+};
+</script>
+{% endfor %}
+

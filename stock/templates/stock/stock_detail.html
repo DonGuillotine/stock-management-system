@@ -1,0 +1,129 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% include 'stock/headers.html' %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview wide-md mx-auto">
+                     <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="nk-block-title">Stock Details</h4>
+                                            </div>
+                                        </div>
+                         <div class="pt-5 pb-3">
+                         <a href="{% url 'issue_item' detail.id %}"><div class='btn btn-primary'>ISSUE THIS ITEM</div></a>
+                         <a href="{% url 'receive_item' detail.id %}"><div class='btn btn-success'>RECEIVE THIS ITEM</div></a>
+                         </div>
+
+                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
+                                            <thead>
+                                                <tr class="nk-tb-item nk-tb-head">
+                                                    <th class="nk-tb-col tb-col-sm"><span>ITEM NAME</span></th>
+                                                    <th class="nk-tb-col"><span>QUANTITY IN STORE</span></th>
+                                                    <th class="nk-tb-col"><span>LAST UPDATED</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span>REORDER LEVEL</span></th>
+                                                     <th class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1 my-n1">
+                                                            <li class="mr-n1">
+                                                                <div class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </th>
+                                                </tr><!-- .nk-tb-item -->
+                                            </thead>
+                                            <tbody>
+
+
+
+
+                                                <tr class="nk-tb-item">
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">{{detail.item_name}}</span>
+                                                    </td>
+                                                   <td class="nk-tb-col">
+                                                        <span class="tb-lead">{{detail.quantity}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-lead">{{detail.last_updated}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">{{detail.re_order}}</span>
+                                                    </td>
+                                                    <td class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1 my-n1">
+                                                            <li class="mr-n1">
+                                                                <div class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                                        <ul class="link-list-opt no-bdr">
+                                                                            <li><a href="{% url 'issue_item' detail.id %}"><em class="icon ni ni-edit"></em><span>Issue Item</span></a></li>
+                                                                            <li><a href="{% url 'receive_item' detail.id %}"><em class="icon ni ni-tranx-fill"></em><span>Receive Item</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr><!-- .nk-tb-item -->
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table><!-- .nk-tb-list -->
+                                    </div> <!-- nk-block -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'stock/footers.html' %}
+  <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}
+    <script>
+        Swal.fire({
+  position: 'center',
+  icon: '{{ message.tags }}',
+  title: '{{message}}',
+  showConfirmButton: true,
+  timer: 15000
+})
+    </script>
+{% endif %}
+{% endfor %}
+{% endif %}
+

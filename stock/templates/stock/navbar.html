@@ -1,0 +1,24 @@
+{% load static %}
+<link href="{% static 'js/nprogress/nprogress.css' %}" rel="stylesheet">
+<script src="{% static 'js/nprogress/nprogress.js' %}"></script>
+<script>
+NProgress.start();
+NProgress.done();
+</script>
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="sf-menu nav nav-pills">
+        <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+          {% if request.user.is_authenticated %}
+        <li class="nav-item"><a href="/add_stock" class="nav-link">Add Stock</a></li>
+        <li class="nav-item"><a href="/view_stock" class="nav-link">View Stock</a></li>
+          <li class="nav-item"><a href="/view_history" class="nav-link">View History</a></li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+           <li class="nav-item"><a href="/accounts/logout" class="nav-link"><button class="btn btn-primary"> {{ user }} | logout</button></a></li>
+          {% else %}
+          <li class="nav-item"><a href="/accounts/login" class="nav-link"><button class="btn btn-danger"> login</button></a></li>
+          {% endif %}
+      </ul>
+    </header>
+</div>

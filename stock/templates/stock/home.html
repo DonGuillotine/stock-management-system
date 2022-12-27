@@ -1,0 +1,256 @@
+{% load static %}
+{% include 'stock/headers.html' %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+               <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Dashboard</h3>
+                        </div><!-- .nk-block-head-content -->
+                        <div class="nk-block-head-content">
+                            <div class="toggle-wrap nk-block-tools-toggle">
+                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                <div class="toggle-expand-content" data-content="pageMenu">
+                                    <ul class="nk-block-tools g-3">
+                                        <li class="nk-block-tools-opt"><a href="/view_history" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- .nk-block-head-content -->
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="row g-gs">
+                         <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">Total Stocks</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">{{body}}</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .card-inner -->
+                                </div><!-- .nk-ecwg -->
+                            </div><!-- .card -->
+                        </div><!-- .col -->
+        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">Total History</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">{{mind}}</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .card-inner -->
+                                </div><!-- .nk-ecwg -->
+                            </div><!-- .card -->
+                        </div><!-- .col -->
+        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">Total Categories</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">{{soul}}</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .card-inner -->
+                                </div><!-- .nk-ecwg -->
+                            </div><!-- .card -->
+                        </div><!-- .col -->
+         <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">Today's Visitors</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">{{count}}</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .card-inner -->
+                                </div><!-- .nk-ecwg -->
+                            </div><!-- .card -->
+                        </div><!-- .col -->
+
+
+
+
+                         <div class="col-xxl-6">
+                                            <div class="card card-full">
+                                                <div class="nk-ecwg nk-ecwg8 h-100">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group mb-3">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Stock Statistics based on Item name</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-ecwg8-ck">
+                                                          <canvas class="line-chart chartjs-render-monitor" id="solidLineChart" width="327" height="225" style="display: block; height: 180px; width: 262px;"></canvas>
+                                                        </div>
+                                                        <div class="chart-label-group pl-5">
+                                                            <div class="chart-label"></div>
+                                                            <div class="chart-label">{% now "jS F Y H:i" %}</div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+
+                         <div class="col-xxl-6">
+                                            <div class="card card-full">
+                                                <div class="nk-ecwg nk-ecwg8 h-100">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group mb-3">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Stock Statistics based on Item name</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-ecwg8-ck">
+                                                          <canvas class="line-chart chartjs-render-monitor" id="solidDataChart" width="327" height="225" style="display: block; height: 180px; width: 262px;"></canvas>
+                                                        </div>
+                                                        <div class="chart-label-group pl-5">
+                                                            <div class="chart-label"></div>
+                                                            <div class="chart-label">{% now "jS F Y H:i" %}</div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                         <div class="col-xxl-6">
+                                            <div class="card card-full">
+                                                <div class="nk-ecwg nk-ecwg8 h-100">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group mb-3">
+                                                            <div class="card-title">
+                                                                <h6 class="title">Stock Statistics based on Category</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-ecwg8-ck">
+                                                          <canvas class="pie-chart chartjs-render-monitor" id="pieItemData" width="327" height="225" style="display: block; height: 180px; width: 262px;"></canvas>
+                                                        </div>
+                                                        <div class="chart-label-group pl-5">
+                                                            <div class="chart-label"></div>
+                                                            <div class="chart-label">{% now "jS F Y H:i" %}</div>
+                                                        </div>
+                                                    </div><!-- .card-inner -->
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+
+
+                        <div style="width: 100%;" class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="nk-block-title">Stock History Analytics based on Category</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row g-gs">
+                                            <div class="col-md-6">
+                                                <div class="card card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head text-center">
+                                                            <h6 class="title">Recently Issued</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                            <canvas class="bar-chart chartjs-render-monitor" id="barChartData"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head text-center">
+                                                            <h6 class="title">Recently Received</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                            <canvas class="doughnut-chart" id="doughnutChartData"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                         <div style="width: 100%;" class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="nk-block-title">Stock History Analytics based on Item name</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row g-gs">
+                                            <div class="col-md-6">
+                                                <div class="card card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head text-center">
+                                                            <h6 class="title">Recently Issued</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                            <canvas class="bar-chart chartjs-render-monitor" id="barItemData"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head text-center">
+                                                            <h6 class="title">Recently Received</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                            <canvas class="doughnut-chart" id="doughnutItemData"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'stock/footers.html' %}
+
+
+

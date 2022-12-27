@@ -1,0 +1,195 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+ip = get_client_ip()
+u = User(user=ip)
+result = User.objects.filter(Q(user__icontains=ip))
+if len(result) == 1:
+    pass
+else:
+    u.save()
+count = User.objects.all().count()
+
+
+
+{% include 'stock/headers.html' %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview wide-md mx-auto">
+                     <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="nk-block-title">Separated Data Table</h4>
+                                                <div class="nk-block-des">
+                                                    <p>Using the most basic table markup, here’s how <code class="code-class">.table</code> based tables look by default.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
+                                            <thead>
+                                                <tr class="nk-tb-item nk-tb-head">
+                                                    <th class="nk-tb-col tb-col-sm"><span>COUNT</span></th>
+                                                    <th class="nk-tb-col"><span>CATEGORY</span></th>
+                                                    <th class="nk-tb-col"><span>STOCK NAME</span></th>
+                                                    <th class="nk-tb-col"><span>IMAGE</span></th>
+                                                    <th class="nk-tb-col tb-col-md"><span>REORDER LEVEL</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>QUANTITY</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>TIME STAMP</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>LAST UPDATED</span></th>
+                                                      <th class="nk-tb-col tb-col-md"><span>DELETE</span></th>
+                                                    <th class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1 my-n1">
+                                                            <li class="mr-n1">
+                                                                <div class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </th>
+                                                </tr><!-- .nk-tb-item -->
+                                            </thead>
+                                            <tbody>
+
+
+
+                                               {% for every in everything %}
+                                                <tr class="nk-tb-item">
+                                                    <td class="nk-tb-col tb-col-sm">
+                                                        <span class="tb-product">
+                                                            <img src="./images/product/a.png" alt="" class="thumb">
+                                                            <span class="title">Pink Fitness Tracker</span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">UY3749</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-lead">$ 99.49</span>
+                                                    </td>
+                                                    <td class="nk-tb-col">
+                                                        <span class="tb-sub">49</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col tb-col-md">
+                                                        <span class="tb-sub">Fitbit, Tracker</span>
+                                                    </td>
+                                                    <td class="nk-tb-col nk-tb-col-tools">
+                                                        <ul class="nk-tb-actions gx-1 my-n1">
+                                                            <li class="mr-n1">
+                                                                <div class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                                        <ul class="link-list-opt no-bdr">
+                                                                            <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a></li>
+                                                                            <li><a href="#"><em class="icon ni ni-eye"></em><span>View Product</span></a></li>
+                                                                            <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Product Orders</span></a></li>
+                                                                            <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr><!-- .nk-tb-item -->
+                                             {% endfor %}
+
+
+
+
+
+
+                                            </tbody>
+                                        </table><!-- .nk-tb-list -->
+                                    </div> <!-- nk-block -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h1>{{title}}</h1>
+    <form method="POST" action="">
+     {% csrf_token %}
+{{form | crispy}}
+    <input class="mt-2 btn btn-primary" type="submit">
+</form>
+<!--<form method="GET" action="">-->
+     {% csrf_token %}
+<form method="POST" action=" ">
+    {% csrf_token %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>COUNT</th>
+            <th>CATEGORY</th>
+            <th>STOCK NAME</th>
+            <th>IMAGE</th>
+            <th>REORDER LEVEL</th>
+            <th>QUANTITY</th>
+            <th>TIME STAMP</th>
+            <th>LAST UPDATED</th>
+            <th>DELETE</th>
+        </tr>
+        </thead>
+
+            {% for every in everything %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a href="{% url 'update_stock' every.id %}">{{every.category}}</a></td>
+            {% if every.quantity <= every.re_order %}
+            <td style="background: orange">
+                <a href="{% url 'stock_detail' every.id %}">{{every.item_name}}</a>
+            </td>
+            {% else %}
+            <td>
+            <a href="{% url 'stock_detail' every.id %}">{{every.item_name}}</a>
+            </td>
+            {% endif %}
+            <td>
+                {% if every.image %}
+                <img style="height: 100px; width: 120px" src="{{ every.image.url }}" alt="{{ every.item_name }}">
+                {% else %}
+                <span class="text-muted">No Cover</span>
+                {% endif %}
+            </td>
+            <td><a href="{% url 're_order' every.id %}">{{every.re_order}}</a></td>
+            <td>{{every.quantity}}</td>
+            <td>{{every.last_updated}}</td>
+            <td>{{every.timestamp}}</td>
+            <td><a id="{{forloop.counter}}" href="javascript:void(0)"><i style="color: red" class="fas fa-trash-alt"></i></a></td>
+<!--                </a></td>-->
+        </tr>
+            {% endfor %}
+    </table>
+</form>
+  </div>
+</main>
+
+
+{% include 'stock/footers.html' %}

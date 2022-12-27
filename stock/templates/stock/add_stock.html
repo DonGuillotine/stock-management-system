@@ -1,0 +1,46 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% include 'stock/headers.html' %}
+
+ <div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview wide-md mx-auto">
+                           <div class="nk-block-head nk-block-head-sm">
+                                    <div class="nk-block-between">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title"></h3>
+                                        </div><!-- .nk-block-head-content -->
+                                    </div><!-- .nk-block-between -->
+                                </div>
+                         <div class="nk-block nk-block-lg">
+         <div class="row g-gs">
+               <div class="col-lg-12">
+                            <div class="card h-100">
+                                <div class="card-inner">
+                                    <div class="card-head">
+                                        <h5 class="card-title">{{title}}</h5>
+                                    </div>
+                                    <form method="POST" action=" " enctype="multipart/form-data" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}">
+                                      {% csrf_token %}
+                                      {{form|crispy}}
+                                      <input class="mt-2 btn btn-primary" type="submit" name="Add Stock">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+{% include 'stock/footers.html' %}
