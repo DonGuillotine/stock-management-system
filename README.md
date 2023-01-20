@@ -30,3 +30,7 @@ I have developed a stock management system using Django, a web-based application
 
 <h3>A dependent form integrated with Ajax and Django.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213728174-72efb424-f79e-4cb6-8369-fae00b464e45.png">
+
+<h3>A Contact Management Area.</h3>
+<img src="https://user-images.githubusercontent.com/89584431/213731328-b6d2efb5-716e-4696-85fb-5727ac2bcc2c.png">
+
