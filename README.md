@@ -13,13 +13,13 @@ I have developed a stock management system using Django, a web-based application
 <h3>Add Stock with dynamic Categories.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213703517-32c3cbd7-e9e0-4a2e-ac68-7ffb3c16fead.png">
 
-<h3>The view stock page integrates data tables with Django, allowing for easy management of inventory with features such as search, edit, view, reorder and delete stocks.</h3>
+<h3>The View Stock page integrates data tables with Django, allowing for easy management of inventory with features such as search, edit, view, reorder and delete stocks.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213707384-a08835e1-3322-40ac-b09f-186fa7a2b64f.png">
 
 <h3>Export to CSV.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213707880-1c9ce6fc-3ae8-43a6-908c-e27fc27d7694.png">
 
-<h3>Issue to customers and Recieve Stocks</h3>
+<h3>Issue to Customers and Recieve Stocks</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213712524-32478065-e0cd-45f7-939e-2f9d41c82f63.gif" width="1011">
 
 <h3>Stock History.</h3>
@@ -28,7 +28,7 @@ I have developed a stock management system using Django, a web-based application
 <h3>Filter Stock History and Export to CSV</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213725337-8425c5a6-b579-4bc6-b4df-a758014d36d5.png">
 
-<h3>A dependent form integrated with Ajax and Django.</h3>
+<h3>A Dependent form integrated with Ajax and Django.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213728174-72efb424-f79e-4cb6-8369-fae00b464e45.png">
 
 <h3>A Contact Management Area.</h3>
