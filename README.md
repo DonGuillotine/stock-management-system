@@ -34,3 +34,66 @@ I have developed a stock management system using Django, a web-based application
 <h3>A Contact Management Area.</h3>
 <img src="https://user-images.githubusercontent.com/89584431/213731328-b6d2efb5-716e-4696-85fb-5727ac2bcc2c.png">
 
+  ## Contributing to Stock Management System
+I welcome and appreciate contributions to this open-source project!
+
+## Getting Started
+1. Fork this repository on GitHub
+2. Clone this repository to your local machine
+3. Create a new branch for your changes
+
+## Making Changes
+1. Add your changes
+2. Run tests (if applicable)
+3. Commit your changes with a clear and descriptive commit message
+
+## Submitting a Pull Request
+1. Push your changes to your fork on GitHub
+2. Open a Pull Request and include a clear and descriptive title and explanation of your changes
+3. I will review and merge your changes
+
+## Additional Resources
+- [Issue tracker](https://github.com/DonGuillotine/stock-management-system/issues)
+
+## Django Installation Guide
+
+![Django Logo](https://www.djangoproject.com/m/img/logos/django-logo-negative.png)
+
+This guide will help you install Django for the first time on your local machine.
+
+## Prerequisites
+- Python3 installed on your machine
+
+## Installation
+1. Open the terminal and run the following command to install Django:
+
+```
+pip install django
+```
+
+2. Verify the installation by running the following command:
+```
+django-admin --version
+```
+
+You should see the version number of Django that you just installed.
+
+## Create a Django Project
+1. Open the terminal and navigate to the desired directory where you want to create your Django project.
+2. Run the following command to create a new Django project:
+```
+django-admin startproject projectname
+```
+Replace "projectname" with the name of your project.
+
+## Run the Development Server
+1. Navigate into the project directory using the following command:
+```
+cd projectname
+```
+2. Run the following command to start the development server:
+```
+python manage.py runserver
+```
+
+Your Django project is now up and running on your local machine. Open your web browser and go to http://127.0.0.1:8000/ to see the default Django page.
