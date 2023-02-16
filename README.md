@@ -1,4 +1,4 @@
-# Stock Management System
+# Stock Management System.
 I have developed a stock management system using Django, a web-based application that allows me to track and manage inventory levels, orders, sales, sales history, analytics and deliveries as well as keeping track of user's activities.
 
 <h3>The Authentication System ensures secure access to the application through unique credentials and a forgot password functionality.</h3>
@@ -37,17 +37,17 @@ I have developed a stock management system using Django, a web-based application
   ## Contributing to Stock Management System
 I welcome and appreciate contributions to this open-source project!
 
-## Getting Started
+## Getting Started.
 1. Fork this repository on GitHub
 2. Clone this repository to your local machine
 3. Create a new branch for your changes
 
-## Making Changes
+## Making Changes.
 1. Add your changes
 2. Run tests (if applicable)
 3. Commit your changes with a clear and descriptive commit message
 
-## Submitting a Pull Request
+## Submitting a Pull Request.
 1. Push your changes to your fork on GitHub
 2. Open a Pull Request and include a clear and descriptive title and explanation of your changes
 3. I will review and merge your changes
